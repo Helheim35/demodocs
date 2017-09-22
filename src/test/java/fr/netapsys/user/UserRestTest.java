@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static capital.scalable.restdocs.AutoDocumentation.responseFields;
+import static capital.scalable.restdocs.AutoDocumentation.*;
 import static capital.scalable.restdocs.jackson.JacksonResultHandlers.prepareJackson;
 import static org.springframework.restdocs.cli.CliDocumentation.curlRequest;
 import static org.springframework.restdocs.http.HttpDocumentation.httpRequest;
@@ -46,7 +46,7 @@ public class UserRestTest {
                 .webAppContextSetup(webApplicationContext)
                 .alwaysDo(prepareJackson(objectMapper))
                 .alwaysDo(
-                        document("{method-name}",
+                        document("{class-name}/{method-name}",
                             preprocessRequest(),
                             preprocessResponse(prettyPrint())
                         )
@@ -57,7 +57,10 @@ public class UserRestTest {
                                 curlRequest(),
                                 httpRequest(),
                                 httpResponse(),
-                                responseFields()
+                                responseFields(),
+                                description(),
+                                methodAndPath(),
+                                section()
                         ))
                 .build();
     }

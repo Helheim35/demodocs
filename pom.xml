@@ -44,9 +44,12 @@
                                 <configuration>
                                     <backend>html</backend>
                                     <doctype>book</doctype>
+                                    <sourceHighlighter>highlightjs</sourceHighlighter>
                                     <attributes>
                                         <snippets>${snippetsDirectory}</snippets>
                                     </attributes>
+                                    <preserveDirectories>true</preserveDirectories>
+                                    <sourceDirectory>${snippetsDirectory}</sourceDirectory>
                                 </configuration>
                             </execution>
                         </executions>
@@ -86,6 +89,15 @@
                         <artifactId>maven-surefire-plugin</artifactId>
 
                         <configuration>
+                            <properties>
+                                <property>
+                                    <name>listener</name>
+                                    <value>
+                                        fr.netapsys.core.AsciidoctorListener
+                                    </value>
+                                </property>
+                            </properties>
+
                             <systemPropertyVariables>
                                 <org.springframework.restdocs.javadocJsonDir>
                                     ${project.build.directory}/generated-javadoc-json

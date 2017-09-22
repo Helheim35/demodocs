@@ -6,22 +6,5 @@
 :toclevels: 4
 :sectlinks:
 
-[[resources-user]]
-== Utilisateur
-
-[[resource-get-user]]
-=== GET
-Requête `GET` récupère le détail d'un utilisateur authentifié.
-
-==== Response Fields
-La réponse est un objet JSON
-
-include::{snippets}/get-user/response-fields.adoc[]
-
-==== Example Request
-
-include::{snippets}/get-user/curl-request.adoc[]
-
-==== Example Response
-
-include::{snippets}/get-user/http-response.adoc[]
+[[resources]]
+= Resources
